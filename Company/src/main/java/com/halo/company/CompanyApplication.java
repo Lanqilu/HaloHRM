@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Bean;
  * @description
  */
 // 1. 配置SpringBoot的包扫描
-@SpringBootApplication(scanBasePackages = "com.halo.company")
+@SpringBootApplication(scanBasePackages = "com.halo")
 // 2. 配置JPA注解的包扫描
 @EntityScan(value = "com.halo.domain.company")
 public class CompanyApplication {

@@ -2,10 +2,10 @@ package com.halo.company.controller;
 
 import com.halo.common.entity.Result;
 import com.halo.common.entity.ResultCode;
+import com.halo.common.exception.CommonException;
 import com.halo.company.service.CompanyService;
 import com.halo.domain.company.Company;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -70,4 +70,19 @@ public class CompanyController {
         result.setData(all);
         return result;
     }
+
+    /**
+     * 异常测试
+     */
+    @RequestMapping(value = "/exception1", method = RequestMethod.GET)
+    public Result exception1() {
+        int i = 1 / 0;
+        return new Result(ResultCode.SUCCESS);
+    }
+
+    @RequestMapping(value = "/exception2", method = RequestMethod.GET)
+    public Result exception2() throws CommonException {
+        throw new CommonException(ResultCode.UNAUTHORISE);
+    }
+
 }
